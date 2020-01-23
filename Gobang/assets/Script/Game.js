@@ -61,9 +61,10 @@ cc.Class({
         for(var y = 0;y<15;y++){
             for(var x = 0;x < 15;x++){
                 var newNode = cc.instantiate(this.chessPrefab);//复制Chess预制资源
-                this.node.addChild(newNode);
-                newNode.setPosition(cc.p(x*40+20,y*40+20));//根据棋盘和棋子大小计算使每个棋子节点位于指定位置
-                newNode.tag = y*15+x;//根据每个节点的tag就可以算出其二维坐标
+                var tag = y*15+x;
+                this.node.addChild(newNode,0,tag.toString());
+                newNode.setPosition(x*60+30,y*60+30);//根据棋盘和棋子大小计算使每个棋子节点位于指定位置
+                // newNode.tag = y*15+x;//根据每个节点的tag就可以算出其二维坐标
                 newNode.on(cc.Node.EventType.TOUCH_END,function(event){
                     self.touchChess = this;
                     if(self.gameState ===  'black' && this.getComponent(cc.Sprite).spriteFrame === null){
@@ -186,8 +187,9 @@ cc.Class({
     },
     
     judgeOver:function(){
-        var x0 = this.touchChess.tag % 15;
-        var y0 = parseInt(this.touchChess.tag / 15);
+        var tag = parseInt(this.touchChess.tag);
+        var x0 = tag % 15;
+        var y0 = parseInt(tag / 15);
         //判断横向
         var fiveCount = 0;
         for(var x = 0;x < 15;x++){
