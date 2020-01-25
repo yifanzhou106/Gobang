@@ -953,7 +953,7 @@
       "__id__": 7
     },
     "component": "",
-    "_componentId": "58b46CNhZFKeaFKaHHSHE1t",
+    "_componentId": "d5f77tMvxZOdrQtpWadUsKD",
     "handler": "startGame",
     "customEventData": ""
   },
@@ -1260,7 +1260,7 @@
       "__id__": 7
     },
     "component": "",
-    "_componentId": "58b46CNhZFKeaFKaHHSHE1t",
+    "_componentId": "d5f77tMvxZOdrQtpWadUsKD",
     "handler": "toMenu",
     "customEventData": ""
   },
