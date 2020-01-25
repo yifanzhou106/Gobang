@@ -61,20 +61,14 @@ cc.Class({
         for(var y = 0;y<15;y++){
             for(var x = 0;x < 15;x++){
                 var newNode = cc.instantiate(this.chessPrefab);//复制Chess预制资源
-                var tag = y*15+x;
-                this.node.addChild(newNode,0,tag.toString());
+                this.node.addChild(newNode);
                 newNode.setPosition(x*60+30,y*60+30);//根据棋盘和棋子大小计算使每个棋子节点位于指定位置
+                newNode.getComponent('Chess').X = x*60+30;
+                newNode.getComponent('Chess').Y = y*60+30;
+                newNode.getComponent('Chess').tag = y*15+x;
+                newNode.getComponent('Chess').id = this.chessList.length;
+                newNode.getComponent('Chess').game = this;
                 // newNode.tag = y*15+x;//根据每个节点的tag就可以算出其二维坐标
-                newNode.on(cc.Node.EventType.TOUCH_END,function(event){
-                    self.touchChess = this;
-                    if(self.gameState ===  'black' && this.getComponent(cc.Sprite).spriteFrame === null){
-                        this.getComponent(cc.Sprite).spriteFrame = self.blackSpriteFrame;//下子后添加棋子图片使棋子显示
-                        self.judgeOver();
-                        if(self.gameState == 'white'){
-                            self.scheduleOnce(function(){self.ai()},1);//延迟一秒电脑下棋
-                        }
-                    }
-                });
                 this.chessList.push(newNode);
             }
         }
@@ -119,11 +113,11 @@ cc.Class({
     //电脑下棋逻辑
     ai:function(){
         //评分
+        cc.log("AI move")
         for(var i=0;i<this.fiveGroup.length;i++){
             var b=0;//五元组里黑棋的个数
             var w=0;//五元组里白棋的个数
             for(var j=0;j<5;j++){
-                this.getComponent(cc.Sprite).spriteFrame
                 if(this.chessList[this.fiveGroup[i][j]].getComponent(cc.Sprite).spriteFrame == this.blackSpriteFrame){
                     b++;
                 }else if(this.chessList[this.fiveGroup[i][j]].getComponent(cc.Sprite).spriteFrame == this.whiteSpriteFrame){
@@ -187,9 +181,11 @@ cc.Class({
     },
     
     judgeOver:function(){
-        var tag = parseInt(this.touchChess.tag);
+        cc.log("judgeOver")
+        var tag = this.touchChess.getComponent("Chess").tag;
         var x0 = tag % 15;
         var y0 = parseInt(tag / 15);
+        cc.log(x0,y0);
         //判断横向
         var fiveCount = 0;
         for(var x = 0;x < 15;x++){
@@ -278,6 +274,7 @@ cc.Class({
                 fiveCount=0;
             }
         }
+        cc.log("Switch player");
         //没有输赢交换下子顺序
         if(this.gameState === 'black'){
             this.gameState = 'white';

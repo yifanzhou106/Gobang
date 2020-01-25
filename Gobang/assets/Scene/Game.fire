@@ -17,7 +17,7 @@
         "__id__": 2
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -57,7 +57,7 @@
     "_is3DNode": true,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "autoReleaseAssets": false,
+    "autoReleaseAssets": true,
     "_id": "7a68f753-c4d4-42e7-8fb5-8fc7ab94114a"
   },
   {
@@ -174,7 +174,7 @@
       "array": [
         0,
         0,
-        541.2658773652742,
+        252.8794179050561,
         0,
         0,
         0,
@@ -425,7 +425,7 @@
     "_id": "7cFt6z0dpBNZyxOhN81NQC"
   },
   {
-    "__type__": "58b46CNhZFKeaFKaHHSHE1t",
+    "__type__": "d5f77tMvxZOdrQtpWadUsKD",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -439,20 +439,20 @@
       "__id__": 13
     },
     "chessPrefab": {
-      "__uuid__": "63de9931-09cc-47fa-89e0-732c656dc983"
+      "__uuid__": "e647fbe6-c1db-4fa0-9404-d8ea59247efd"
     },
     "chessList": [],
     "whiteSpriteFrame": {
       "__uuid__": "10ee1908-c7a6-45d0-a009-4b24fdef3bad"
     },
     "blackSpriteFrame": {
-      "__uuid__": "67a68ca5-3f66-4fa3-8858-600f7f025c03"
+      "__uuid__": "da5bb995-4dcd-4078-934d-005a27fb6a85"
     },
     "touchChess": null,
     "gameState": "white",
     "fiveGroup": [],
     "fiveGroupScore": [],
-    "_id": "53T0S3TRFE1ZUrnFViNQ9m"
+    "_id": "c9zxiIKQhHKIsbfEXsjtq2"
   },
   {
     "__type__": "cc.Sprite",
